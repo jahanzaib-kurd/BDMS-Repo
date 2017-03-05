@@ -7,23 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Area
+    public partial class PurchaseTarget
     {
-        public Area()
-        {
-            this.Shops = new HashSet<Shop>();
-        }
-    
-        public int AreaId { get; set; }
-        public string AreaCode { get; set; }
-        public string AreaName { get; set; }
+        public int PurchaseTargetId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
+        public Nullable<System.DateTime> ToDate { get; set; }
+        public Nullable<System.DateTime> FromDate { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual ICollection<Shop> Shops { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

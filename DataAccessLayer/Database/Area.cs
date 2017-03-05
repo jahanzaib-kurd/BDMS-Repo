@@ -7,20 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Cheque
+    public partial class Area
     {
-        public int ChequeId { get; set; }
-        public string ChequeNumber { get; set; }
-        public Nullable<int> BankId { get; set; }
-        public Nullable<System.DateTime> ChequeDate { get; set; }
-        public Nullable<decimal> Amount { get; set; }
+        public Area()
+        {
+            this.Shops = new HashSet<Shop>();
+        }
+    
+        public int AreaId { get; set; }
+        public string AreaCode { get; set; }
+        public string AreaName { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Bank Bank { get; set; }
+        public virtual ICollection<Shop> Shops { get; set; }
     }
 }

@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ConnString : DbContext
+    public partial class BDMSEntities : DbContext
     {
-        public ConnString()
-            : base("name=ConnString")
+        public BDMSEntities()
+            : base("name=BDMSEntities")
         {
         }
     

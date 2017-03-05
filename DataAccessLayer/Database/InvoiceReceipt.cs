@@ -7,29 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Invoice
+    public partial class InvoiceReceipt
     {
-        public Invoice()
-        {
-            this.InvoiceDetails = new HashSet<InvoiceDetail>();
-        }
-    
-        public int InvoiceId { get; set; }
-        public string InvoiceNumber { get; set; }
-        public Nullable<System.DateTime> InvoiceDate { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public int InvoiceReceiptId { get; set; }
         public Nullable<int> ShopId { get; set; }
-        public Nullable<decimal> TotalTonage { get; set; }
-        public Nullable<decimal> ExtraDiscount { get; set; }
-        public Nullable<decimal> NetTotal { get; set; }
+        public Nullable<int> BankId { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public string PersonalName { get; set; }
+        public string PaymentMedium { get; set; }
+        public string ChequeNo { get; set; }
+        public Nullable<System.DateTime> ReceiptDate { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
+        public virtual Bank Bank { get; set; }
         public virtual Shop Shop { get; set; }
-        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

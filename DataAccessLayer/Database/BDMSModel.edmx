@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BDMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="AreaId" />
@@ -409,7 +409,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBModelStoreContainer">
+        <EntityContainer Name="BDMSModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cheque" EntityType="Self.Cheque" Schema="dbo" store:Type="Tables" />
@@ -495,96 +495,11 @@
             <End Role="SupplierReciept" EntitySet="SupplierReciept" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="ConnString" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Areas" EntityType="DBModel.Area" />
-          <EntitySet Name="Banks" EntityType="DBModel.Bank" />
-          <EntitySet Name="Cheques" EntityType="DBModel.Cheque" />
-          <EntitySet Name="Expanses" EntityType="DBModel.Expanse" />
-          <EntitySet Name="ExpanseTypes" EntityType="DBModel.ExpanseType" />
-          <EntitySet Name="Inventories" EntityType="DBModel.Inventory" />
-          <EntitySet Name="Invoices" EntityType="DBModel.Invoice" />
-          <EntitySet Name="InvoiceDetails" EntityType="DBModel.InvoiceDetail" />
-          <EntitySet Name="InvoiceReceipts" EntityType="DBModel.InvoiceReceipt" />
-          <EntitySet Name="Products" EntityType="DBModel.Product" />
-          <EntitySet Name="Purchases" EntityType="DBModel.Purchase" />
-          <EntitySet Name="PurchaseTargets" EntityType="DBModel.PurchaseTarget" />
-          <EntitySet Name="Shops" EntityType="DBModel.Shop" />
-          <EntitySet Name="StockPositions" EntityType="DBModel.StockPosition" />
-          <EntitySet Name="Suppliers" EntityType="DBModel.Supplier" />
-          <EntitySet Name="SupplierReciepts" EntityType="DBModel.SupplierReciept" />
-          <AssociationSet Name="FK_Shop_Area" Association="DBModel.FK_Shop_Area">
-            <End Role="Area" EntitySet="Areas" />
-            <End Role="Shop" EntitySet="Shops" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cheque_Bank" Association="DBModel.FK_Cheque_Bank">
-            <End Role="Bank" EntitySet="Banks" />
-            <End Role="Cheque" EntitySet="Cheques" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Expanse_Bank" Association="DBModel.FK_Expanse_Bank">
-            <End Role="Bank" EntitySet="Banks" />
-            <End Role="Expanse" EntitySet="Expanses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InvoiceReceipt_Bank" Association="DBModel.FK_InvoiceReceipt_Bank">
-            <End Role="Bank" EntitySet="Banks" />
-            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Purchase_Bank" Association="DBModel.FK_Purchase_Bank">
-            <End Role="Bank" EntitySet="Banks" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SupplierReciept_Bank" Association="DBModel.FK_SupplierReciept_Bank">
-            <End Role="Bank" EntitySet="Banks" />
-            <End Role="SupplierReciept" EntitySet="SupplierReciepts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Expanse_ExpanseType" Association="DBModel.FK_Expanse_ExpanseType">
-            <End Role="ExpanseType" EntitySet="ExpanseTypes" />
-            <End Role="Expanse" EntitySet="Expanses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Inventory_Product" Association="DBModel.FK_Inventory_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Inventory" EntitySet="Inventories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Invoice_Shop" Association="DBModel.FK_Invoice_Shop">
-            <End Role="Shop" EntitySet="Shops" />
-            <End Role="Invoice" EntitySet="Invoices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InvoiceDetail_Invoice" Association="DBModel.FK_InvoiceDetail_Invoice">
-            <End Role="Invoice" EntitySet="Invoices" />
-            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InvoiceDetail_Product" Association="DBModel.FK_InvoiceDetail_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InvoiceReceipt_Shop" Association="DBModel.FK_InvoiceReceipt_Shop">
-            <End Role="Shop" EntitySet="Shops" />
-            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Purchase_Product" Association="DBModel.FK_Purchase_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PurchaseTarget_Product" Association="DBModel.FK_PurchaseTarget_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="PurchaseTarget" EntitySet="PurchaseTargets" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StockPosition_Product" Association="DBModel.FK_StockPosition_Product">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="StockPosition" EntitySet="StockPositions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Purchase_Supplier" Association="DBModel.FK_Purchase_Supplier">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="Purchase" EntitySet="Purchases" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SupplierReciept_Supplier" Association="DBModel.FK_SupplierReciept_Supplier">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="SupplierReciept" EntitySet="SupplierReciepts" />
-          </AssociationSet>
-        </EntityContainer>
+      <Schema Namespace="BDMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="AreaId" />
@@ -593,7 +508,7 @@
           <Property Name="AreaCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AreaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Shops" Relationship="DBModel.FK_Shop_Area" FromRole="Area" ToRole="Shop" />
+          <NavigationProperty Name="Shops" Relationship="Self.FK_Shop_Area" FromRole="Area" ToRole="Shop" />
         </EntityType>
         <EntityType Name="Bank">
           <Key>
@@ -604,11 +519,11 @@
           <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="BankBalance" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Cheques" Relationship="DBModel.FK_Cheque_Bank" FromRole="Bank" ToRole="Cheque" />
-          <NavigationProperty Name="Expanses" Relationship="DBModel.FK_Expanse_Bank" FromRole="Bank" ToRole="Expanse" />
-          <NavigationProperty Name="InvoiceReceipts" Relationship="DBModel.FK_InvoiceReceipt_Bank" FromRole="Bank" ToRole="InvoiceReceipt" />
-          <NavigationProperty Name="Purchases" Relationship="DBModel.FK_Purchase_Bank" FromRole="Bank" ToRole="Purchase" />
-          <NavigationProperty Name="SupplierReciepts" Relationship="DBModel.FK_SupplierReciept_Bank" FromRole="Bank" ToRole="SupplierReciept" />
+          <NavigationProperty Name="Cheques" Relationship="Self.FK_Cheque_Bank" FromRole="Bank" ToRole="Cheque" />
+          <NavigationProperty Name="Expanses" Relationship="Self.FK_Expanse_Bank" FromRole="Bank" ToRole="Expanse" />
+          <NavigationProperty Name="InvoiceReceipts" Relationship="Self.FK_InvoiceReceipt_Bank" FromRole="Bank" ToRole="InvoiceReceipt" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Bank" FromRole="Bank" ToRole="Purchase" />
+          <NavigationProperty Name="SupplierReciepts" Relationship="Self.FK_SupplierReciept_Bank" FromRole="Bank" ToRole="SupplierReciept" />
         </EntityType>
         <EntityType Name="Cheque">
           <Key>
@@ -620,7 +535,7 @@
           <Property Name="ChequeDate" Type="DateTime" Precision="3" />
           <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Bank" Relationship="DBModel.FK_Cheque_Bank" FromRole="Cheque" ToRole="Bank" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_Cheque_Bank" FromRole="Cheque" ToRole="Bank" />
         </EntityType>
         <EntityType Name="Expanse">
           <Key>
@@ -634,8 +549,8 @@
           <Property Name="ExpanseDate" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Bank" Relationship="DBModel.FK_Expanse_Bank" FromRole="Expanse" ToRole="Bank" />
-          <NavigationProperty Name="ExpanseType" Relationship="DBModel.FK_Expanse_ExpanseType" FromRole="Expanse" ToRole="ExpanseType" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_Expanse_Bank" FromRole="Expanse" ToRole="Bank" />
+          <NavigationProperty Name="ExpanseType" Relationship="Self.FK_Expanse_ExpanseType" FromRole="Expanse" ToRole="ExpanseType" />
         </EntityType>
         <EntityType Name="ExpanseType">
           <Key>
@@ -645,7 +560,7 @@
           <Property Name="ExpanseTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Expanses" Relationship="DBModel.FK_Expanse_ExpanseType" FromRole="ExpanseType" ToRole="Expanse" />
+          <NavigationProperty Name="Expanses" Relationship="Self.FK_Expanse_ExpanseType" FromRole="ExpanseType" ToRole="Expanse" />
         </EntityType>
         <EntityType Name="Inventory">
           <Key>
@@ -659,7 +574,7 @@
           <Property Name="RefId" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Product" Relationship="DBModel.FK_Inventory_Product" FromRole="Inventory" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Inventory_Product" FromRole="Inventory" ToRole="Product" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
@@ -674,8 +589,8 @@
           <Property Name="ExtraDiscount" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="NetTotal" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Shop" Relationship="DBModel.FK_Invoice_Shop" FromRole="Invoice" ToRole="Shop" />
-          <NavigationProperty Name="InvoiceDetails" Relationship="DBModel.FK_InvoiceDetail_Invoice" FromRole="Invoice" ToRole="InvoiceDetail" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK_Invoice_Shop" FromRole="Invoice" ToRole="Shop" />
+          <NavigationProperty Name="InvoiceDetails" Relationship="Self.FK_InvoiceDetail_Invoice" FromRole="Invoice" ToRole="InvoiceDetail" />
         </EntityType>
         <EntityType Name="InvoiceDetail">
           <Key>
@@ -691,8 +606,8 @@
           <Property Name="NetAmount" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Tonage" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Invoice" Relationship="DBModel.FK_InvoiceDetail_Invoice" FromRole="InvoiceDetail" ToRole="Invoice" />
-          <NavigationProperty Name="Product" Relationship="DBModel.FK_InvoiceDetail_Product" FromRole="InvoiceDetail" ToRole="Product" />
+          <NavigationProperty Name="Invoice" Relationship="Self.FK_InvoiceDetail_Invoice" FromRole="InvoiceDetail" ToRole="Invoice" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_InvoiceDetail_Product" FromRole="InvoiceDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="InvoiceReceipt">
           <Key>
@@ -708,8 +623,8 @@
           <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Bank" Relationship="DBModel.FK_InvoiceReceipt_Bank" FromRole="InvoiceReceipt" ToRole="Bank" />
-          <NavigationProperty Name="Shop" Relationship="DBModel.FK_InvoiceReceipt_Shop" FromRole="InvoiceReceipt" ToRole="Shop" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_InvoiceReceipt_Bank" FromRole="InvoiceReceipt" ToRole="Bank" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK_InvoiceReceipt_Shop" FromRole="InvoiceReceipt" ToRole="Shop" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -724,11 +639,11 @@
           <Property Name="Rate" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="CurrentBalance" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Inventories" Relationship="DBModel.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
-          <NavigationProperty Name="InvoiceDetails" Relationship="DBModel.FK_InvoiceDetail_Product" FromRole="Product" ToRole="InvoiceDetail" />
-          <NavigationProperty Name="Purchases" Relationship="DBModel.FK_Purchase_Product" FromRole="Product" ToRole="Purchase" />
-          <NavigationProperty Name="PurchaseTargets" Relationship="DBModel.FK_PurchaseTarget_Product" FromRole="Product" ToRole="PurchaseTarget" />
-          <NavigationProperty Name="StockPositions" Relationship="DBModel.FK_StockPosition_Product" FromRole="Product" ToRole="StockPosition" />
+          <NavigationProperty Name="Inventories" Relationship="Self.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
+          <NavigationProperty Name="InvoiceDetails" Relationship="Self.FK_InvoiceDetail_Product" FromRole="Product" ToRole="InvoiceDetail" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Product" FromRole="Product" ToRole="Purchase" />
+          <NavigationProperty Name="PurchaseTargets" Relationship="Self.FK_PurchaseTarget_Product" FromRole="Product" ToRole="PurchaseTarget" />
+          <NavigationProperty Name="StockPositions" Relationship="Self.FK_StockPosition_Product" FromRole="Product" ToRole="StockPosition" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
@@ -745,9 +660,9 @@
           <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
           <Property Name="Tonage" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Bank" Relationship="DBModel.FK_Purchase_Bank" FromRole="Purchase" ToRole="Bank" />
-          <NavigationProperty Name="Product" Relationship="DBModel.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
-          <NavigationProperty Name="Supplier" Relationship="DBModel.FK_Purchase_Supplier" FromRole="Purchase" ToRole="Supplier" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_Purchase_Bank" FromRole="Purchase" ToRole="Bank" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Purchase_Supplier" FromRole="Purchase" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="PurchaseTarget">
           <Key>
@@ -759,7 +674,7 @@
           <Property Name="ToDate" Type="DateTime" Precision="3" />
           <Property Name="FromDate" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Product" Relationship="DBModel.FK_PurchaseTarget_Product" FromRole="PurchaseTarget" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_PurchaseTarget_Product" FromRole="PurchaseTarget" ToRole="Product" />
         </EntityType>
         <EntityType Name="Shop">
           <Key>
@@ -771,9 +686,9 @@
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CurrentBalanace" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Area" Relationship="DBModel.FK_Shop_Area" FromRole="Shop" ToRole="Area" />
-          <NavigationProperty Name="Invoices" Relationship="DBModel.FK_Invoice_Shop" FromRole="Shop" ToRole="Invoice" />
-          <NavigationProperty Name="InvoiceReceipts" Relationship="DBModel.FK_InvoiceReceipt_Shop" FromRole="Shop" ToRole="InvoiceReceipt" />
+          <NavigationProperty Name="Area" Relationship="Self.FK_Shop_Area" FromRole="Shop" ToRole="Area" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoice_Shop" FromRole="Shop" ToRole="Invoice" />
+          <NavigationProperty Name="InvoiceReceipts" Relationship="Self.FK_InvoiceReceipt_Shop" FromRole="Shop" ToRole="InvoiceReceipt" />
         </EntityType>
         <EntityType Name="StockPosition">
           <Key>
@@ -787,7 +702,7 @@
           <Property Name="ClosingBalance" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="Tonage" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Product" Relationship="DBModel.FK_StockPosition_Product" FromRole="StockPosition" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_StockPosition_Product" FromRole="StockPosition" ToRole="Product" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -799,8 +714,8 @@
           <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OpeningBalanace" Type="Decimal" Precision="15" Scale="2" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Purchases" Relationship="DBModel.FK_Purchase_Supplier" FromRole="Supplier" ToRole="Purchase" />
-          <NavigationProperty Name="SupplierReciepts" Relationship="DBModel.FK_SupplierReciept_Supplier" FromRole="Supplier" ToRole="SupplierReciept" />
+          <NavigationProperty Name="Purchases" Relationship="Self.FK_Purchase_Supplier" FromRole="Supplier" ToRole="Purchase" />
+          <NavigationProperty Name="SupplierReciepts" Relationship="Self.FK_SupplierReciept_Supplier" FromRole="Supplier" ToRole="SupplierReciept" />
         </EntityType>
         <EntityType Name="SupplierReciept">
           <Key>
@@ -816,12 +731,12 @@
           <Property Name="PaymentMedium" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ChequeNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="Bank" Relationship="DBModel.FK_SupplierReciept_Bank" FromRole="SupplierReciept" ToRole="Bank" />
-          <NavigationProperty Name="Supplier" Relationship="DBModel.FK_SupplierReciept_Supplier" FromRole="SupplierReciept" ToRole="Supplier" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_SupplierReciept_Bank" FromRole="SupplierReciept" ToRole="Bank" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_SupplierReciept_Supplier" FromRole="SupplierReciept" ToRole="Supplier" />
         </EntityType>
         <Association Name="FK_Shop_Area">
-          <End Type="DBModel.Area" Role="Area" Multiplicity="0..1" />
-          <End Type="DBModel.Shop" Role="Shop" Multiplicity="*" />
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Area">
               <PropertyRef Name="AreaId" />
@@ -832,8 +747,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cheque_Bank">
-          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
-          <End Type="DBModel.Cheque" Role="Cheque" Multiplicity="*" />
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bank">
               <PropertyRef Name="BankId" />
@@ -844,8 +759,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Expanse_Bank">
-          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
-          <End Type="DBModel.Expanse" Role="Expanse" Multiplicity="*" />
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Expanse" Type="Self.Expanse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bank">
               <PropertyRef Name="BankId" />
@@ -856,8 +771,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_InvoiceReceipt_Bank">
-          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
-          <End Type="DBModel.InvoiceReceipt" Role="InvoiceReceipt" Multiplicity="*" />
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="InvoiceReceipt" Type="Self.InvoiceReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bank">
               <PropertyRef Name="BankId" />
@@ -868,8 +783,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchase_Bank">
-          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
-          <End Type="DBModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bank">
               <PropertyRef Name="BankId" />
@@ -880,8 +795,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SupplierReciept_Bank">
-          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
-          <End Type="DBModel.SupplierReciept" Role="SupplierReciept" Multiplicity="*" />
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="SupplierReciept" Type="Self.SupplierReciept" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Bank">
               <PropertyRef Name="BankId" />
@@ -892,8 +807,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Expanse_ExpanseType">
-          <End Type="DBModel.ExpanseType" Role="ExpanseType" Multiplicity="0..1" />
-          <End Type="DBModel.Expanse" Role="Expanse" Multiplicity="*" />
+          <End Role="ExpanseType" Type="Self.ExpanseType" Multiplicity="0..1" />
+          <End Role="Expanse" Type="Self.Expanse" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExpanseType">
               <PropertyRef Name="ExpanseTypeId" />
@@ -904,8 +819,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Inventory_Product">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="DBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductId" />
@@ -916,8 +831,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Invoice_Shop">
-          <End Type="DBModel.Shop" Role="Shop" Multiplicity="0..1" />
-          <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shop">
               <PropertyRef Name="ShopId" />
@@ -928,8 +843,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_InvoiceDetail_Invoice">
-          <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="0..1" />
-          <End Type="DBModel.InvoiceDetail" Role="InvoiceDetail" Multiplicity="*" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+          <End Role="InvoiceDetail" Type="Self.InvoiceDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Invoice">
               <PropertyRef Name="InvoiceId" />
@@ -940,8 +855,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_InvoiceDetail_Product">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="DBModel.InvoiceDetail" Role="InvoiceDetail" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="InvoiceDetail" Type="Self.InvoiceDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductId" />
@@ -952,8 +867,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_InvoiceReceipt_Shop">
-          <End Type="DBModel.Shop" Role="Shop" Multiplicity="0..1" />
-          <End Type="DBModel.InvoiceReceipt" Role="InvoiceReceipt" Multiplicity="*" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="InvoiceReceipt" Type="Self.InvoiceReceipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Shop">
               <PropertyRef Name="ShopId" />
@@ -964,8 +879,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchase_Product">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="DBModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductId" />
@@ -976,8 +891,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PurchaseTarget_Product">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="DBModel.PurchaseTarget" Role="PurchaseTarget" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PurchaseTarget" Type="Self.PurchaseTarget" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductId" />
@@ -988,8 +903,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_StockPosition_Product">
-          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
-          <End Type="DBModel.StockPosition" Role="StockPosition" Multiplicity="*" />
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="StockPosition" Type="Self.StockPosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="ProductId" />
@@ -1000,8 +915,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Purchase_Supplier">
-          <End Type="DBModel.Supplier" Role="Supplier" Multiplicity="0..1" />
-          <End Type="DBModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="SupplierId" />
@@ -1012,8 +927,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SupplierReciept_Supplier">
-          <End Type="DBModel.Supplier" Role="Supplier" Multiplicity="0..1" />
-          <End Type="DBModel.SupplierReciept" Role="SupplierReciept" Multiplicity="*" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierReciept" Type="Self.SupplierReciept" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="SupplierId" />
@@ -1023,225 +938,311 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="BDMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Areas" EntityType="Self.Area" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Cheques" EntityType="Self.Cheque" />
+          <EntitySet Name="Expanses" EntityType="Self.Expanse" />
+          <EntitySet Name="ExpanseTypes" EntityType="Self.ExpanseType" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="InvoiceDetails" EntityType="Self.InvoiceDetail" />
+          <EntitySet Name="InvoiceReceipts" EntityType="Self.InvoiceReceipt" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
+          <EntitySet Name="PurchaseTargets" EntityType="Self.PurchaseTarget" />
+          <EntitySet Name="Shops" EntityType="Self.Shop" />
+          <EntitySet Name="StockPositions" EntityType="Self.StockPosition" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="SupplierReciepts" EntityType="Self.SupplierReciept" />
+          <AssociationSet Name="FK_Shop_Area" Association="Self.FK_Shop_Area">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cheque_Bank" Association="Self.FK_Cheque_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Cheque" EntitySet="Cheques" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expanse_Bank" Association="Self.FK_Expanse_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Expanse" EntitySet="Expanses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceReceipt_Bank" Association="Self.FK_InvoiceReceipt_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Bank" Association="Self.FK_Purchase_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierReciept_Bank" Association="Self.FK_SupplierReciept_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="SupplierReciept" EntitySet="SupplierReciepts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expanse_ExpanseType" Association="Self.FK_Expanse_ExpanseType">
+            <End Role="ExpanseType" EntitySet="ExpanseTypes" />
+            <End Role="Expanse" EntitySet="Expanses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Product" Association="Self.FK_Inventory_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Shop" Association="Self.FK_Invoice_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceDetail_Invoice" Association="Self.FK_InvoiceDetail_Invoice">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceDetail_Product" Association="Self.FK_InvoiceDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceReceipt_Shop" Association="Self.FK_InvoiceReceipt_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseTarget_Product" Association="Self.FK_PurchaseTarget_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseTarget" EntitySet="PurchaseTargets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockPosition_Product" Association="Self.FK_StockPosition_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="StockPosition" EntitySet="StockPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Supplier" Association="Self.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierReciept_Supplier" Association="Self.FK_SupplierReciept_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierReciept" EntitySet="SupplierReciepts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="ConnString">
+        <EntityContainerMapping StorageEntityContainer="BDMSModelStoreContainer" CdmEntityContainer="BDMSEntities">
           <EntitySetMapping Name="Areas">
-            <EntityTypeMapping TypeName="DBModel.Area">
+            <EntityTypeMapping TypeName="BDMSModel.Area">
               <MappingFragment StoreEntitySet="Area">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
-                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
                 <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Banks">
-            <EntityTypeMapping TypeName="DBModel.Bank">
+            <EntityTypeMapping TypeName="BDMSModel.Bank">
               <MappingFragment StoreEntitySet="Bank">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="BankBalance" ColumnName="BankBalance" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankBalance" ColumnName="BankBalance" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cheques">
-            <EntityTypeMapping TypeName="DBModel.Cheque">
+            <EntityTypeMapping TypeName="BDMSModel.Cheque">
               <MappingFragment StoreEntitySet="Cheque">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
                 <ScalarProperty Name="ChequeId" ColumnName="ChequeId" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Expanses">
-            <EntityTypeMapping TypeName="DBModel.Expanse">
+            <EntityTypeMapping TypeName="BDMSModel.Expanse">
               <MappingFragment StoreEntitySet="Expanse">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ExpanseDate" ColumnName="ExpanseDate" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="ExpanseTypeId" ColumnName="ExpanseTypeId" />
                 <ScalarProperty Name="ExpanseId" ColumnName="ExpanseId" />
+                <ScalarProperty Name="ExpanseTypeId" ColumnName="ExpanseTypeId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ExpanseDate" ColumnName="ExpanseDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExpanseTypes">
-            <EntityTypeMapping TypeName="DBModel.ExpanseType">
+            <EntityTypeMapping TypeName="BDMSModel.ExpanseType">
               <MappingFragment StoreEntitySet="ExpanseType">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ExpanseTypeCode" ColumnName="ExpanseTypeCode" />
                 <ScalarProperty Name="ExpanseTypeId" ColumnName="ExpanseTypeId" />
+                <ScalarProperty Name="ExpanseTypeCode" ColumnName="ExpanseTypeCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Inventories">
-            <EntityTypeMapping TypeName="DBModel.Inventory">
+            <EntityTypeMapping TypeName="BDMSModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="RefId" ColumnName="RefId" />
-                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Invoices">
-            <EntityTypeMapping TypeName="DBModel.Invoice">
+            <EntityTypeMapping TypeName="BDMSModel.Invoice">
               <MappingFragment StoreEntitySet="Invoice">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
-                <ScalarProperty Name="ExtraDiscount" ColumnName="ExtraDiscount" />
-                <ScalarProperty Name="TotalTonage" ColumnName="TotalTonage" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
                 <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="TotalTonage" ColumnName="TotalTonage" />
+                <ScalarProperty Name="ExtraDiscount" ColumnName="ExtraDiscount" />
+                <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InvoiceDetails">
-            <EntityTypeMapping TypeName="DBModel.InvoiceDetail">
+            <EntityTypeMapping TypeName="BDMSModel.InvoiceDetail">
               <MappingFragment StoreEntitySet="InvoiceDetail">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
-                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
-                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
-                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
-                <ScalarProperty Name="TradeRate" ColumnName="TradeRate" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
                 <ScalarProperty Name="InvoiceDetailId" ColumnName="InvoiceDetailId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TradeRate" ColumnName="TradeRate" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InvoiceReceipts">
-            <EntityTypeMapping TypeName="DBModel.InvoiceReceipt">
+            <EntityTypeMapping TypeName="BDMSModel.InvoiceReceipt">
               <MappingFragment StoreEntitySet="InvoiceReceipt">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
-                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
-                <ScalarProperty Name="PaymentMedium" ColumnName="PaymentMedium" />
-                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
                 <ScalarProperty Name="InvoiceReceiptId" ColumnName="InvoiceReceiptId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
+                <ScalarProperty Name="PaymentMedium" ColumnName="PaymentMedium" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="DBModel.Product">
+            <EntityTypeMapping TypeName="BDMSModel.Product">
               <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
-                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Purchases">
-            <EntityTypeMapping TypeName="DBModel.Purchase">
+            <EntityTypeMapping TypeName="BDMSModel.Purchase">
               <MappingFragment StoreEntitySet="Purchase">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
-                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="InvoiceRate" ColumnName="InvoiceRate" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="PurcaseId" ColumnName="PurcaseId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="InvoiceRate" ColumnName="InvoiceRate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseTargets">
-            <EntityTypeMapping TypeName="DBModel.PurchaseTarget">
+            <EntityTypeMapping TypeName="BDMSModel.PurchaseTarget">
               <MappingFragment StoreEntitySet="PurchaseTarget">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
-                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="PurchaseTargetId" ColumnName="PurchaseTargetId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shops">
-            <EntityTypeMapping TypeName="DBModel.Shop">
+            <EntityTypeMapping TypeName="BDMSModel.Shop">
               <MappingFragment StoreEntitySet="Shop">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CurrentBalanace" ColumnName="CurrentBalanace" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
-                <ScalarProperty Name="ShopCode" ColumnName="ShopCode" />
                 <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="ShopCode" ColumnName="ShopCode" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CurrentBalanace" ColumnName="CurrentBalanace" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StockPositions">
-            <EntityTypeMapping TypeName="DBModel.StockPosition">
+            <EntityTypeMapping TypeName="BDMSModel.StockPosition">
               <MappingFragment StoreEntitySet="StockPosition">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
-                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
-                <ScalarProperty Name="SoldQuantity" ColumnName="SoldQuantity" />
-                <ScalarProperty Name="PurchaseQuanity" ColumnName="PurchaseQuanity" />
-                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="StockPositionId" ColumnName="StockPositionId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="PurchaseQuanity" ColumnName="PurchaseQuanity" />
+                <ScalarProperty Name="SoldQuantity" ColumnName="SoldQuantity" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="DBModel.Supplier">
+            <EntityTypeMapping TypeName="BDMSModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="OpeningBalanace" ColumnName="OpeningBalanace" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
                 <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="OpeningBalanace" ColumnName="OpeningBalanace" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierReciepts">
-            <EntityTypeMapping TypeName="DBModel.SupplierReciept">
+            <EntityTypeMapping TypeName="BDMSModel.SupplierReciept">
               <MappingFragment StoreEntitySet="SupplierReciept">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
-                <ScalarProperty Name="PaymentMedium" ColumnName="PaymentMedium" />
-                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
-                <ScalarProperty Name="BankId" ColumnName="BankId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="RecieptDate" ColumnName="RecieptDate" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
                 <ScalarProperty Name="SupplierRecieptId" ColumnName="SupplierRecieptId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="RecieptDate" ColumnName="RecieptDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
+                <ScalarProperty Name="PaymentMedium" ColumnName="PaymentMedium" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

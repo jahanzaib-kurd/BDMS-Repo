@@ -7,25 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class InvoiceDetail
+    public partial class Purchase
     {
-        public int InvoiceDetailId { get; set; }
-        public Nullable<int> InvoiceId { get; set; }
+        public int PurcaseId { get; set; }
+        public Nullable<int> SupplierId { get; set; }
         public Nullable<int> ProductId { get; set; }
+        public Nullable<int> BankId { get; set; }
+        public Nullable<decimal> InvoiceRate { get; set; }
         public Nullable<decimal> Quantity { get; set; }
-        public Nullable<decimal> TradeRate { get; set; }
-        public Nullable<decimal> Scheme { get; set; }
-        public Nullable<decimal> GrossAmount { get; set; }
-        public Nullable<decimal> NetAmount { get; set; }
+        public Nullable<decimal> Amount { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public Nullable<System.DateTime> PurchaseDate { get; set; }
         public Nullable<decimal> Tonage { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Invoice Invoice { get; set; }
+        public virtual Bank Bank { get; set; }
         public virtual Product Product { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

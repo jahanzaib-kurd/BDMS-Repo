@@ -7,25 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class InvoiceReceipt
+    public partial class SupplierReciept
     {
-        public int InvoiceReceiptId { get; set; }
-        public Nullable<int> ShopId { get; set; }
-        public Nullable<int> BankId { get; set; }
+        public int SupplierRecieptId { get; set; }
+        public Nullable<int> SupplierId { get; set; }
+        public Nullable<System.DateTime> RecieptDate { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<decimal> Amount { get; set; }
+        public Nullable<int> BankId { get; set; }
         public string PersonalName { get; set; }
         public string PaymentMedium { get; set; }
-        public string ChequeNo { get; set; }
-        public Nullable<System.DateTime> ReceiptDate { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public string ChequeNumber { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Bank Bank { get; set; }
-        public virtual Shop Shop { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

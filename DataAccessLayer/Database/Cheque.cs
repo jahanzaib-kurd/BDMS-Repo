@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PurchaseTarget
+    public partial class Cheque
     {
-        public int PurchaseTargetId { get; set; }
-        public Nullable<int> ProductId { get; set; }
-        public Nullable<decimal> Quantity { get; set; }
-        public Nullable<System.DateTime> ToDate { get; set; }
-        public Nullable<System.DateTime> FromDate { get; set; }
+        public int ChequeId { get; set; }
+        public string ChequeNumber { get; set; }
+        public Nullable<int> BankId { get; set; }
+        public Nullable<System.DateTime> ChequeDate { get; set; }
+        public Nullable<decimal> Amount { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Product Product { get; set; }
+        public virtual Bank Bank { get; set; }
     }
 }

@@ -7,23 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccessLayer.DB
+namespace DataAccessLayer.Database
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Expanse
+    public partial class StockPosition
     {
-        public int ExpanseId { get; set; }
-        public Nullable<int> ExpanseTypeId { get; set; }
-        public Nullable<int> BankId { get; set; }
-        public Nullable<decimal> Amount { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<System.DateTime> ExpanseDate { get; set; }
-        public string Description { get; set; }
+        public int StockPositionId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<decimal> OpeningBalance { get; set; }
+        public Nullable<decimal> PurchaseQuanity { get; set; }
+        public Nullable<decimal> SoldQuantity { get; set; }
+        public Nullable<decimal> ClosingBalance { get; set; }
+        public Nullable<decimal> Tonage { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     
-        public virtual Bank Bank { get; set; }
-        public virtual ExpanseType ExpanseType { get; set; }
+        public virtual Product Product { get; set; }
     }
 }
