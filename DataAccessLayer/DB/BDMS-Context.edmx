@@ -5,93 +5,1247 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="cus">
+        <EntityType Name="Area">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="AreaId" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="AreaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaCode" Type="varchar" MaxLength="50" />
+          <Property Name="AreaName" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <EntityType Name="Table">
+        <EntityType Name="Bank">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="BankId" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="BankId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankCode" Type="varchar" MaxLength="50" />
+          <Property Name="BankName" Type="varchar" MaxLength="100" />
+          <Property Name="BankBalance" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <EntityType Name="Table2">
+        <EntityType Name="Cheque">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ChequeId" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="10" />
+          <Property Name="ChequeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChequeNumber" Type="varchar" MaxLength="50" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="ChequeDate" Type="datetime" />
+          <Property Name="Amount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <EntityType Name="Expanse">
+          <Key>
+            <PropertyRef Name="ExpanseId" />
+          </Key>
+          <Property Name="ExpanseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpanseTypeId" Type="int" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ExpanseDate" Type="datetime" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="ExpanseType">
+          <Key>
+            <PropertyRef Name="ExpanseTypeId" />
+          </Key>
+          <Property Name="ExpanseTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExpanseTypeCode" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentBalance" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="RefId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceNumber" Type="varchar" MaxLength="100" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ShopId" Type="int" />
+          <Property Name="TotalTonage" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="ExtraDiscount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="NetTotal" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="InvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailId" />
+          </Key>
+          <Property Name="InvoiceDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="TradeRate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Scheme" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="GrossAmount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="NetAmount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Tonage" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="InvoiceReceipt">
+          <Key>
+            <PropertyRef Name="InvoiceReceiptId" />
+          </Key>
+          <Property Name="InvoiceReceiptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopId" Type="int" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="PersonalName" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentMedium" Type="varchar" MaxLength="50" />
+          <Property Name="ChequeNo" Type="varchar" MaxLength="50" />
+          <Property Name="ReceiptDate" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCode" Type="varchar" MaxLength="50" />
+          <Property Name="Scheme" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ProductName" Type="varchar" MaxLength="100" />
+          <Property Name="Weight" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="Measurement" Type="varchar" MaxLength="20" />
+          <Property Name="Rate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="CurrentBalance" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurcaseId" />
+          </Key>
+          <Property Name="PurcaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="InvoiceRate" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Quantity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="PurchaseDate" Type="datetime" />
+          <Property Name="Tonage" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="PurchaseTarget">
+          <Key>
+            <PropertyRef Name="PurchaseTargetId" />
+          </Key>
+          <Property Name="PurchaseTargetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ToDate" Type="datetime" />
+          <Property Name="FromDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShopCode" Type="varchar" MaxLength="50" />
+          <Property Name="AreaId" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="CurrentBalanace" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="StockPosition">
+          <Key>
+            <PropertyRef Name="StockPositionId" />
+          </Key>
+          <Property Name="StockPositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="OpeningBalance" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="PurchaseQuanity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="SoldQuantity" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="ClosingBalance" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="Tonage" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierCode" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" />
+          <Property Name="OpeningBalanace" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="SupplierReciept">
+          <Key>
+            <PropertyRef Name="SupplierRecieptId" />
+          </Key>
+          <Property Name="SupplierRecieptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierId" Type="int" />
+          <Property Name="RecieptDate" Type="datetime" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Amount" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="PersonalName" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentMedium" Type="varchar" MaxLength="50" />
+          <Property Name="ChequeNumber" Type="varchar" MaxLength="100" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Cheque_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Cheque" Type="Self.Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expanse_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Expanse" Type="Self.Expanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Expanse">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expanse_ExpanseType">
+          <End Role="ExpanseType" Type="Self.ExpanseType" Multiplicity="0..1" />
+          <End Role="Expanse" Type="Self.Expanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpanseType">
+              <PropertyRef Name="ExpanseTypeId" />
+            </Principal>
+            <Dependent Role="Expanse">
+              <PropertyRef Name="ExpanseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Shop">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceDetail_Invoice">
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="0..1" />
+          <End Role="InvoiceDetail" Type="Self.InvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="InvoiceDetail">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceDetail_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="InvoiceDetail" Type="Self.InvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="InvoiceDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceReceipt_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="InvoiceReceipt" Type="Self.InvoiceReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="InvoiceReceipt">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceReceipt_Shop">
+          <End Role="Shop" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="InvoiceReceipt" Type="Self.InvoiceReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="InvoiceReceipt">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="Purchase" Type="Self.Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseTarget_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="PurchaseTarget" Type="Self.PurchaseTarget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseTarget">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shop_Area">
+          <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
+          <End Role="Shop" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaId" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockPosition_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="StockPosition" Type="Self.StockPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="StockPosition">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierReciept_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="SupplierReciept" Type="Self.SupplierReciept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="SupplierReciept">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierReciept_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierReciept" Type="Self.SupplierReciept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="SupplierReciept">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBModelStoreContainer">
-          <EntitySet Name="cus" EntityType="Self.cus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table2" EntityType="Self.Table2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cheque" EntityType="Self.Cheque" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expanse" EntityType="Self.Expanse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExpanseType" EntityType="Self.ExpanseType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceDetail" EntityType="Self.InvoiceDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InvoiceReceipt" EntityType="Self.InvoiceReceipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseTarget" EntityType="Self.PurchaseTarget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shop" EntityType="Self.Shop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockPosition" EntityType="Self.StockPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierReciept" EntityType="Self.SupplierReciept" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cheque_Bank" Association="Self.FK_Cheque_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Cheque" EntitySet="Cheque" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expanse_Bank" Association="Self.FK_Expanse_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Expanse" EntitySet="Expanse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expanse_ExpanseType" Association="Self.FK_Expanse_ExpanseType">
+            <End Role="ExpanseType" EntitySet="ExpanseType" />
+            <End Role="Expanse" EntitySet="Expanse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Product" Association="Self.FK_Inventory_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Shop" Association="Self.FK_Invoice_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceDetail_Invoice" Association="Self.FK_InvoiceDetail_Invoice">
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceDetail_Product" Association="Self.FK_InvoiceDetail_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceReceipt_Bank" Association="Self.FK_InvoiceReceipt_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceReceipt_Shop" Association="Self.FK_InvoiceReceipt_Shop">
+            <End Role="Shop" EntitySet="Shop" />
+            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Bank" Association="Self.FK_Purchase_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Product" Association="Self.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Supplier" Association="Self.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Purchase" EntitySet="Purchase" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseTarget_Product" Association="Self.FK_PurchaseTarget_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PurchaseTarget" EntitySet="PurchaseTarget" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shop_Area" Association="Self.FK_Shop_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Shop" EntitySet="Shop" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockPosition_Product" Association="Self.FK_StockPosition_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="StockPosition" EntitySet="StockPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierReciept_Bank" Association="Self.FK_SupplierReciept_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="SupplierReciept" EntitySet="SupplierReciept" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierReciept_Supplier" Association="Self.FK_SupplierReciept_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierReciept" EntitySet="SupplierReciept" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityContainer Name="ConnString" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Tables" EntityType="Self.Table" />
-          <EntitySet Name="cus" EntityType="DBModel.cu" />
-          <EntitySet Name="Table2" EntityType="DBModel.Table2" />
-          </EntityContainer>
-        <EntityType Name="cu">
+          <EntitySet Name="Areas" EntityType="DBModel.Area" />
+          <EntitySet Name="Banks" EntityType="DBModel.Bank" />
+          <EntitySet Name="Cheques" EntityType="DBModel.Cheque" />
+          <EntitySet Name="Expanses" EntityType="DBModel.Expanse" />
+          <EntitySet Name="ExpanseTypes" EntityType="DBModel.ExpanseType" />
+          <EntitySet Name="Inventories" EntityType="DBModel.Inventory" />
+          <EntitySet Name="Invoices" EntityType="DBModel.Invoice" />
+          <EntitySet Name="InvoiceDetails" EntityType="DBModel.InvoiceDetail" />
+          <EntitySet Name="InvoiceReceipts" EntityType="DBModel.InvoiceReceipt" />
+          <EntitySet Name="Products" EntityType="DBModel.Product" />
+          <EntitySet Name="Purchases" EntityType="DBModel.Purchase" />
+          <EntitySet Name="PurchaseTargets" EntityType="DBModel.PurchaseTarget" />
+          <EntitySet Name="Shops" EntityType="DBModel.Shop" />
+          <EntitySet Name="StockPositions" EntityType="DBModel.StockPosition" />
+          <EntitySet Name="Suppliers" EntityType="DBModel.Supplier" />
+          <EntitySet Name="SupplierReciepts" EntityType="DBModel.SupplierReciept" />
+          <AssociationSet Name="FK_Shop_Area" Association="DBModel.FK_Shop_Area">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Shop" EntitySet="Shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cheque_Bank" Association="DBModel.FK_Cheque_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Cheque" EntitySet="Cheques" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expanse_Bank" Association="DBModel.FK_Expanse_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Expanse" EntitySet="Expanses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceReceipt_Bank" Association="DBModel.FK_InvoiceReceipt_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Bank" Association="DBModel.FK_Purchase_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierReciept_Bank" Association="DBModel.FK_SupplierReciept_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="SupplierReciept" EntitySet="SupplierReciepts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Expanse_ExpanseType" Association="DBModel.FK_Expanse_ExpanseType">
+            <End Role="ExpanseType" EntitySet="ExpanseTypes" />
+            <End Role="Expanse" EntitySet="Expanses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Product" Association="DBModel.FK_Inventory_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Shop" Association="DBModel.FK_Invoice_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceDetail_Invoice" Association="DBModel.FK_InvoiceDetail_Invoice">
+            <End Role="Invoice" EntitySet="Invoices" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceDetail_Product" Association="DBModel.FK_InvoiceDetail_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="InvoiceDetail" EntitySet="InvoiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InvoiceReceipt_Shop" Association="DBModel.FK_InvoiceReceipt_Shop">
+            <End Role="Shop" EntitySet="Shops" />
+            <End Role="InvoiceReceipt" EntitySet="InvoiceReceipts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Product" Association="DBModel.FK_Purchase_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseTarget_Product" Association="DBModel.FK_PurchaseTarget_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="PurchaseTarget" EntitySet="PurchaseTargets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockPosition_Product" Association="DBModel.FK_StockPosition_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="StockPosition" EntitySet="StockPositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Purchase_Supplier" Association="DBModel.FK_Purchase_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="Purchase" EntitySet="Purchases" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierReciept_Supplier" Association="DBModel.FK_SupplierReciept_Supplier">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierReciept" EntitySet="SupplierReciepts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Area">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="AreaId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AreaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Shops" Relationship="DBModel.FK_Shop_Area" FromRole="Area" ToRole="Shop" />
         </EntityType>
-        <EntityType Name="Table2">
+        <EntityType Name="Bank">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="BankId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="BankId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BankBalance" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Cheques" Relationship="DBModel.FK_Cheque_Bank" FromRole="Bank" ToRole="Cheque" />
+          <NavigationProperty Name="Expanses" Relationship="DBModel.FK_Expanse_Bank" FromRole="Bank" ToRole="Expanse" />
+          <NavigationProperty Name="InvoiceReceipts" Relationship="DBModel.FK_InvoiceReceipt_Bank" FromRole="Bank" ToRole="InvoiceReceipt" />
+          <NavigationProperty Name="Purchases" Relationship="DBModel.FK_Purchase_Bank" FromRole="Bank" ToRole="Purchase" />
+          <NavigationProperty Name="SupplierReciepts" Relationship="DBModel.FK_SupplierReciept_Bank" FromRole="Bank" ToRole="SupplierReciept" />
         </EntityType>
-      </Schema>
+        <EntityType Name="Cheque">
+          <Key>
+            <PropertyRef Name="ChequeId" />
+          </Key>
+          <Property Name="ChequeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChequeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="ChequeDate" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Bank" Relationship="DBModel.FK_Cheque_Bank" FromRole="Cheque" ToRole="Bank" />
+        </EntityType>
+        <EntityType Name="Expanse">
+          <Key>
+            <PropertyRef Name="ExpanseId" />
+          </Key>
+          <Property Name="ExpanseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpanseTypeId" Type="Int32" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ExpanseDate" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Bank" Relationship="DBModel.FK_Expanse_Bank" FromRole="Expanse" ToRole="Bank" />
+          <NavigationProperty Name="ExpanseType" Relationship="DBModel.FK_Expanse_ExpanseType" FromRole="Expanse" ToRole="ExpanseType" />
+        </EntityType>
+        <EntityType Name="ExpanseType">
+          <Key>
+            <PropertyRef Name="ExpanseTypeId" />
+          </Key>
+          <Property Name="ExpanseTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExpanseTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Expanses" Relationship="DBModel.FK_Expanse_ExpanseType" FromRole="ExpanseType" ToRole="Expanse" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="InventoryId" />
+          </Key>
+          <Property Name="InventoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentBalance" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="RefId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Product" Relationship="DBModel.FK_Inventory_Product" FromRole="Inventory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="TotalTonage" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ExtraDiscount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="NetTotal" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Shop" Relationship="DBModel.FK_Invoice_Shop" FromRole="Invoice" ToRole="Shop" />
+          <NavigationProperty Name="InvoiceDetails" Relationship="DBModel.FK_InvoiceDetail_Invoice" FromRole="Invoice" ToRole="InvoiceDetail" />
+        </EntityType>
+        <EntityType Name="InvoiceDetail">
+          <Key>
+            <PropertyRef Name="InvoiceDetailId" />
+          </Key>
+          <Property Name="InvoiceDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="TradeRate" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Scheme" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="GrossAmount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="NetAmount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Tonage" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Invoice" Relationship="DBModel.FK_InvoiceDetail_Invoice" FromRole="InvoiceDetail" ToRole="Invoice" />
+          <NavigationProperty Name="Product" Relationship="DBModel.FK_InvoiceDetail_Product" FromRole="InvoiceDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="InvoiceReceipt">
+          <Key>
+            <PropertyRef Name="InvoiceReceiptId" />
+          </Key>
+          <Property Name="InvoiceReceiptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopId" Type="Int32" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PersonalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMedium" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiptDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Bank" Relationship="DBModel.FK_InvoiceReceipt_Bank" FromRole="InvoiceReceipt" ToRole="Bank" />
+          <NavigationProperty Name="Shop" Relationship="DBModel.FK_InvoiceReceipt_Shop" FromRole="InvoiceReceipt" ToRole="Shop" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Scheme" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="Measurement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Rate" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CurrentBalance" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Inventories" Relationship="DBModel.FK_Inventory_Product" FromRole="Product" ToRole="Inventory" />
+          <NavigationProperty Name="InvoiceDetails" Relationship="DBModel.FK_InvoiceDetail_Product" FromRole="Product" ToRole="InvoiceDetail" />
+          <NavigationProperty Name="Purchases" Relationship="DBModel.FK_Purchase_Product" FromRole="Product" ToRole="Purchase" />
+          <NavigationProperty Name="PurchaseTargets" Relationship="DBModel.FK_PurchaseTarget_Product" FromRole="Product" ToRole="PurchaseTarget" />
+          <NavigationProperty Name="StockPositions" Relationship="DBModel.FK_StockPosition_Product" FromRole="Product" ToRole="StockPosition" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="PurcaseId" />
+          </Key>
+          <Property Name="PurcaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="InvoiceRate" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Quantity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="3" />
+          <Property Name="Tonage" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Bank" Relationship="DBModel.FK_Purchase_Bank" FromRole="Purchase" ToRole="Bank" />
+          <NavigationProperty Name="Product" Relationship="DBModel.FK_Purchase_Product" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="Supplier" Relationship="DBModel.FK_Purchase_Supplier" FromRole="Purchase" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="PurchaseTarget">
+          <Key>
+            <PropertyRef Name="PurchaseTargetId" />
+          </Key>
+          <Property Name="PurchaseTargetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ToDate" Type="DateTime" Precision="3" />
+          <Property Name="FromDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Product" Relationship="DBModel.FK_PurchaseTarget_Product" FromRole="PurchaseTarget" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShopCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AreaId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentBalanace" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Area" Relationship="DBModel.FK_Shop_Area" FromRole="Shop" ToRole="Area" />
+          <NavigationProperty Name="Invoices" Relationship="DBModel.FK_Invoice_Shop" FromRole="Shop" ToRole="Invoice" />
+          <NavigationProperty Name="InvoiceReceipts" Relationship="DBModel.FK_InvoiceReceipt_Shop" FromRole="Shop" ToRole="InvoiceReceipt" />
+        </EntityType>
+        <EntityType Name="StockPosition">
+          <Key>
+            <PropertyRef Name="StockPositionId" />
+          </Key>
+          <Property Name="StockPositionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="OpeningBalance" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="PurchaseQuanity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="SoldQuantity" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="ClosingBalance" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="Tonage" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Product" Relationship="DBModel.FK_StockPosition_Product" FromRole="StockPosition" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OpeningBalanace" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Purchases" Relationship="DBModel.FK_Purchase_Supplier" FromRole="Supplier" ToRole="Purchase" />
+          <NavigationProperty Name="SupplierReciepts" Relationship="DBModel.FK_SupplierReciept_Supplier" FromRole="Supplier" ToRole="SupplierReciept" />
+        </EntityType>
+        <EntityType Name="SupplierReciept">
+          <Key>
+            <PropertyRef Name="SupplierRecieptId" />
+          </Key>
+          <Property Name="SupplierRecieptId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierId" Type="Int32" />
+          <Property Name="RecieptDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Amount" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="PersonalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMedium" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ChequeNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="Bank" Relationship="DBModel.FK_SupplierReciept_Bank" FromRole="SupplierReciept" ToRole="Bank" />
+          <NavigationProperty Name="Supplier" Relationship="DBModel.FK_SupplierReciept_Supplier" FromRole="SupplierReciept" ToRole="Supplier" />
+        </EntityType>
+        <Association Name="FK_Shop_Area">
+          <End Type="DBModel.Area" Role="Area" Multiplicity="0..1" />
+          <End Type="DBModel.Shop" Role="Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaId" />
+            </Principal>
+            <Dependent Role="Shop">
+              <PropertyRef Name="AreaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cheque_Bank">
+          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="DBModel.Cheque" Role="Cheque" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Cheque">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expanse_Bank">
+          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="DBModel.Expanse" Role="Expanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Expanse">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceReceipt_Bank">
+          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="DBModel.InvoiceReceipt" Role="InvoiceReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="InvoiceReceipt">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Bank">
+          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="DBModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierReciept_Bank">
+          <End Type="DBModel.Bank" Role="Bank" Multiplicity="0..1" />
+          <End Type="DBModel.SupplierReciept" Role="SupplierReciept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="BankId" />
+            </Principal>
+            <Dependent Role="SupplierReciept">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Expanse_ExpanseType">
+          <End Type="DBModel.ExpanseType" Role="ExpanseType" Multiplicity="0..1" />
+          <End Type="DBModel.Expanse" Role="Expanse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExpanseType">
+              <PropertyRef Name="ExpanseTypeId" />
+            </Principal>
+            <Dependent Role="Expanse">
+              <PropertyRef Name="ExpanseTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Product">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DBModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Shop">
+          <End Type="DBModel.Shop" Role="Shop" Multiplicity="0..1" />
+          <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceDetail_Invoice">
+          <End Type="DBModel.Invoice" Role="Invoice" Multiplicity="0..1" />
+          <End Type="DBModel.InvoiceDetail" Role="InvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoice">
+              <PropertyRef Name="InvoiceId" />
+            </Principal>
+            <Dependent Role="InvoiceDetail">
+              <PropertyRef Name="InvoiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceDetail_Product">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DBModel.InvoiceDetail" Role="InvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="InvoiceDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InvoiceReceipt_Shop">
+          <End Type="DBModel.Shop" Role="Shop" Multiplicity="0..1" />
+          <End Type="DBModel.InvoiceReceipt" Role="InvoiceReceipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shop">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="InvoiceReceipt">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Product">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DBModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseTarget_Product">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DBModel.PurchaseTarget" Role="PurchaseTarget" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="PurchaseTarget">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockPosition_Product">
+          <End Type="DBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="DBModel.StockPosition" Role="StockPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="StockPosition">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Purchase_Supplier">
+          <End Type="DBModel.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="DBModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="Purchase">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierReciept_Supplier">
+          <End Type="DBModel.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="DBModel.SupplierReciept" Role="SupplierReciept" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="SupplierId" />
+            </Principal>
+            <Dependent Role="SupplierReciept">
+              <PropertyRef Name="SupplierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="ConnString">
-          <EntitySetMapping Name="Tables">
-            <EntityTypeMapping TypeName="IsTypeOf(DBModel.Table)">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="DBModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cus">
-            <EntityTypeMapping TypeName="DBModel.cu">
-              <MappingFragment StoreEntitySet="cus">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="DBModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="BankBalance" ColumnName="BankBalance" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankCode" ColumnName="BankCode" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table2">
-            <EntityTypeMapping TypeName="DBModel.Table2">
-              <MappingFragment StoreEntitySet="Table2">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="Cheques">
+            <EntityTypeMapping TypeName="DBModel.Cheque">
+              <MappingFragment StoreEntitySet="Cheque">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ChequeDate" ColumnName="ChequeDate" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="ChequeId" ColumnName="ChequeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+          <EntitySetMapping Name="Expanses">
+            <EntityTypeMapping TypeName="DBModel.Expanse">
+              <MappingFragment StoreEntitySet="Expanse">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpanseDate" ColumnName="ExpanseDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ExpanseTypeId" ColumnName="ExpanseTypeId" />
+                <ScalarProperty Name="ExpanseId" ColumnName="ExpanseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExpanseTypes">
+            <EntityTypeMapping TypeName="DBModel.ExpanseType">
+              <MappingFragment StoreEntitySet="ExpanseType">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExpanseTypeCode" ColumnName="ExpanseTypeCode" />
+                <ScalarProperty Name="ExpanseTypeId" ColumnName="ExpanseTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="DBModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="RefId" ColumnName="RefId" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="InventoryId" ColumnName="InventoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="DBModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="NetTotal" ColumnName="NetTotal" />
+                <ScalarProperty Name="ExtraDiscount" ColumnName="ExtraDiscount" />
+                <ScalarProperty Name="TotalTonage" ColumnName="TotalTonage" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="InvoiceNumber" ColumnName="InvoiceNumber" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceDetails">
+            <EntityTypeMapping TypeName="DBModel.InvoiceDetail">
+              <MappingFragment StoreEntitySet="InvoiceDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
+                <ScalarProperty Name="NetAmount" ColumnName="NetAmount" />
+                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="TradeRate" ColumnName="TradeRate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="InvoiceDetailId" ColumnName="InvoiceDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoiceReceipts">
+            <EntityTypeMapping TypeName="DBModel.InvoiceReceipt">
+              <MappingFragment StoreEntitySet="InvoiceReceipt">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+                <ScalarProperty Name="ChequeNo" ColumnName="ChequeNo" />
+                <ScalarProperty Name="PaymentMedium" ColumnName="PaymentMedium" />
+                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="InvoiceReceiptId" ColumnName="InvoiceReceiptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="DBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Scheme" ColumnName="Scheme" />
+                <ScalarProperty Name="ProductCode" ColumnName="ProductCode" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="DBModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="InvoiceRate" ColumnName="InvoiceRate" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="PurcaseId" ColumnName="PurcaseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseTargets">
+            <EntityTypeMapping TypeName="DBModel.PurchaseTarget">
+              <MappingFragment StoreEntitySet="PurchaseTarget">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PurchaseTargetId" ColumnName="PurchaseTargetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="DBModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CurrentBalanace" ColumnName="CurrentBalanace" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="ShopCode" ColumnName="ShopCode" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockPositions">
+            <EntityTypeMapping TypeName="DBModel.StockPosition">
+              <MappingFragment StoreEntitySet="StockPosition">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Tonage" ColumnName="Tonage" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+                <ScalarProperty Name="SoldQuantity" ColumnName="SoldQuantity" />
+                <ScalarProperty Name="PurchaseQuanity" ColumnName="PurchaseQuanity" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="StockPositionId" ColumnName="StockPositionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="DBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="OpeningBalanace" ColumnName="OpeningBalanace" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SupplierCode" ColumnName="SupplierCode" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierReciepts">
+            <EntityTypeMapping TypeName="DBModel.SupplierReciept">
+              <MappingFragment StoreEntitySet="SupplierReciept">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ChequeNumber" ColumnName="ChequeNumber" />
+                <ScalarProperty Name="PaymentMedium" ColumnName="PaymentMedium" />
+                <ScalarProperty Name="PersonalName" ColumnName="PersonalName" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RecieptDate" ColumnName="RecieptDate" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="SupplierRecieptId" ColumnName="SupplierRecieptId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

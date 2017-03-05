@@ -12,9 +12,15 @@ namespace DataAccessLayer.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class cu
+    public partial class PurchaseTarget
     {
-        public int Id { get; set; }
-        public string name { get; set; }
+        public int PurchaseTargetId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
+        public Nullable<System.DateTime> ToDate { get; set; }
+        public Nullable<System.DateTime> FromDate { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+    
+        public virtual Product Product { get; set; }
     }
 }

@@ -4,10 +4,65 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="abf1468547f84c8c942adfd93a0ae883" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Table" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.cu" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DBModel.Table2" Width="1.5" PointX="0.75" PointY="3.75" />
+      <Diagram DiagramId="abf1468547f84c8c942adfd93a0ae883" Name="Diagram1" ZoomLevel="156">
+        <EntityTypeShape EntityType="DBModel.Area" Width="1.5" PointX="12.375" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Bank" Width="1.5" PointX="16.625" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Cheque" Width="1.5" PointX="17.5" PointY="2" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Expanse" Width="1.5" PointX="19" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.ExpanseType" Width="1.5" PointX="18.875" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Inventory" Width="1.5" PointX="6.5" PointY="2" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Invoice" Width="1.5" PointX="11" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.InvoiceDetail" Width="1.5" PointX="9" PointY="1.625" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.InvoiceReceipt" Width="1.5" PointX="15.5" PointY="2.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Product" Width="1.5" PointX="7.25" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Purchase" Width="1.5" PointX="12.25" PointY="4.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.PurchaseTarget" Width="1.5" PointX="4.5" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Shop" Width="1.5" PointX="14.625" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.StockPosition" Width="1.5" PointX="4.625" PointY="1.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.Supplier" Width="1.5" PointX="10" PointY="0.5" IsExpanded="false" />
+        <EntityTypeShape EntityType="DBModel.SupplierReciept" Width="1.5" PointX="13.375" PointY="2.875" IsExpanded="false" />
+        <AssociationConnector Association="DBModel.FK_Shop_Area" />
+        <AssociationConnector Association="DBModel.FK_Cheque_Bank" />
+        <AssociationConnector Association="DBModel.FK_Expanse_Bank" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DBModel.FK_InvoiceReceipt_Bank" />
+        <AssociationConnector Association="DBModel.FK_Purchase_Bank" />
+        <AssociationConnector Association="DBModel.FK_SupplierReciept_Bank" ManuallyRouted="true" >
+          <ConnectorPoint PointX="16.625" PointY="0.9" />
+          <ConnectorPoint PointX="16.495689655172413" PointY="1.275" />
+          <ConnectorPoint PointX="15.895833333333334" PointY="1.2749999999999993" />
+          <ConnectorPoint PointX="15.729166666666666" PointY="1.275" />
+          <ConnectorPoint PointX="14.946047483307998" PointY="1.275" />
+          <ConnectorPoint PointX="14.946047483307998" PointY="2.347" />
+          <ConnectorPoint PointX="14.761942716128196" PointY="2.347" />
+          <ConnectorPoint PointX="14.761942716128196" PointY="2.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DBModel.FK_Expanse_ExpanseType" />
+        <AssociationConnector Association="DBModel.FK_Inventory_Product" />
+        <AssociationConnector Association="DBModel.FK_Invoice_Shop" />
+        <AssociationConnector Association="DBModel.FK_InvoiceDetail_Invoice" />
+        <AssociationConnector Association="DBModel.FK_InvoiceDetail_Product" />
+        <AssociationConnector Association="DBModel.FK_InvoiceReceipt_Shop" />
+        <AssociationConnector Association="DBModel.FK_Purchase_Product" />
+        <AssociationConnector Association="DBModel.FK_PurchaseTarget_Product" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="DBModel.FK_StockPosition_Product" />
+        <AssociationConnector Association="DBModel.FK_Purchase_Supplier" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.023659414060035" PointY="0.9" />
+          <ConnectorPoint PointX="11.023659414060035" PointY="2.4115917831071463" />
+          <ConnectorPoint PointX="12.070395136252202" PointY="2.4115917831071458" />
+          <ConnectorPoint PointX="12.23706180291887" PointY="2.4115917831071463" />
+          <ConnectorPoint PointX="13.133531191738808" PointY="2.4115917831071463" />
+          <ConnectorPoint PointX="13.133531191738808" PointY="4.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DBModel.FK_SupplierReciept_Supplier" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.5" PointY="0.77413659740482" />
+          <ConnectorPoint PointX="11.5" PointY="2.016025549914001" />
+          <ConnectorPoint PointX="12.070395136252202" PointY="2.0160255499140005" />
+          <ConnectorPoint PointX="12.23706180291887" PointY="2.016025549914001" />
+          <ConnectorPoint PointX="13.821216983888478" PointY="2.016025549914001" />
+          <ConnectorPoint PointX="13.821216983888478" PointY="2.875" />
+        </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

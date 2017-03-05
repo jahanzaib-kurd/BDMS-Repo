@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DB\Area.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Bank.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="DB\BDMS-Context.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,13 +84,46 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BDMS-Context.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DB\cu.cs">
+    <Compile Include="DB\Cheque.cs">
       <DependentUpon>BDMS-Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Table.cs">
+    <Compile Include="DB\Expanse.cs">
       <DependentUpon>BDMS-Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Table2.cs">
+    <Compile Include="DB\ExpanseType.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Inventory.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Invoice.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\InvoiceDetail.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\InvoiceReceipt.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Product.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Purchase.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\PurchaseTarget.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Shop.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\StockPosition.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Supplier.cs">
+      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\SupplierReciept.cs">
       <DependentUpon>BDMS-Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository.cs" />

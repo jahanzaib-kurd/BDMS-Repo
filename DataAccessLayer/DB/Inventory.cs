@@ -12,9 +12,17 @@ namespace DataAccessLayer.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Table2
+    public partial class Inventory
     {
-        public int Id { get; set; }
-        public string name { get; set; }
+        public int InventoryId { get; set; }
+        public Nullable<int> ProductId { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
+        public string Type { get; set; }
+        public Nullable<decimal> CurrentBalance { get; set; }
+        public Nullable<int> RefId { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+    
+        public virtual Product Product { get; set; }
     }
 }

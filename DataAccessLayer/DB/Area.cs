@@ -12,9 +12,18 @@ namespace DataAccessLayer.DB
     using System;
     using System.Collections.Generic;
     
-    public partial class Table
+    public partial class Area
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public Area()
+        {
+            this.Shops = new HashSet<Shop>();
+        }
+    
+        public int AreaId { get; set; }
+        public string AreaCode { get; set; }
+        public string AreaName { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+    
+        public virtual ICollection<Shop> Shops { get; set; }
     }
 }

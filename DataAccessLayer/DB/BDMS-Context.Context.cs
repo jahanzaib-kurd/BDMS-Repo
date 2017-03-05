@@ -25,8 +25,21 @@ namespace DataAccessLayer.DB
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Table> Tables { get; set; }
-        public virtual DbSet<cu> cus { get; set; }
-        public virtual DbSet<Table2> Table2 { get; set; }
+        public virtual DbSet<Area> Areas { get; set; }
+        public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<Cheque> Cheques { get; set; }
+        public virtual DbSet<Expanse> Expanses { get; set; }
+        public virtual DbSet<ExpanseType> ExpanseTypes { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual DbSet<InvoiceReceipt> InvoiceReceipts { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Purchase> Purchases { get; set; }
+        public virtual DbSet<PurchaseTarget> PurchaseTargets { get; set; }
+        public virtual DbSet<Shop> Shops { get; set; }
+        public virtual DbSet<StockPosition> StockPositions { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<SupplierReciept> SupplierReciepts { get; set; }
     }
 }
