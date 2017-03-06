@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb17c8695ff54711883691b876477ae5" Name="Diagram1">
+        <EntityTypeShape EntityType="BDMSModel.Area" Width="1.5" PointX="1.5" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Bank" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Cheque" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Expanse" Width="1.5" PointX="9" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.ExpanseType" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Inventory" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Invoice" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.InvoiceDetail" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.InvoiceReceipt" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Product" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Purchase" Width="1.5" PointX="6" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.PurchaseTarget" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Shop" Width="1.5" PointX="1.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.StockPosition" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.Supplier" Width="1.5" PointX="3.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDMSModel.SupplierReciept" Width="1.5" PointX="9" PointY="9.25" IsExpanded="true" />
+        <AssociationConnector Association="BDMSModel.FK_Shop_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Cheque_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Expanse_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_InvoiceReceipt_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Purchase_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_SupplierReciept_Bank" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Expanse_ExpanseType" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Inventory_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Invoice_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_InvoiceDetail_Invoice" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_InvoiceDetail_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_InvoiceReceipt_Shop" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Purchase_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_PurchaseTarget_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_StockPosition_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_Purchase_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="BDMSModel.FK_SupplierReciept_Supplier" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

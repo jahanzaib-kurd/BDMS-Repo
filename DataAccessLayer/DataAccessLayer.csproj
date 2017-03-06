@@ -11,6 +11,7 @@
     <AssemblyName>DataAccessLayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -63,68 +63,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DB\Area.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Area.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Bank.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Bank.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\BDMS-Context.Context.cs">
+    <Compile Include="Database\BDMSModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BDMS-Context.Context.tt</DependentUpon>
+      <DependentUpon>BDMSModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\BDMS-Context.cs">
+    <Compile Include="Database\BDMSModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\BDMS-Context.Designer.cs">
+    <Compile Include="Database\BDMSModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BDMS-Context.edmx</DependentUpon>
+      <DependentUpon>BDMSModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DB\Cheque.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Cheque.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Expanse.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Expanse.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\ExpanseType.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\ExpanseType.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Inventory.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Inventory.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Invoice.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Invoice.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\InvoiceDetail.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\InvoiceDetail.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\InvoiceReceipt.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\InvoiceReceipt.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Product.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Product.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Purchase.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Purchase.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\PurchaseTarget.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\PurchaseTarget.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Shop.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Shop.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\StockPosition.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\StockPosition.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\Supplier.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\Supplier.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DB\SupplierReciept.cs">
-      <DependentUpon>BDMS-Context.tt</DependentUpon>
+    <Compile Include="Database\SupplierReciept.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -148,12 +148,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DB\BDMS-Context.edmx">
+    <EntityDeploy Include="Database\BDMSModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BDMS-Context.Designer.cs</LastGenOutput>
+      <LastGenOutput>BDMSModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DB\BDMS-Context.edmx.diagram">
-      <DependentUpon>BDMS-Context.edmx</DependentUpon>
+    <None Include="Database\BDMSModel.edmx.diagram">
+      <DependentUpon>BDMSModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -161,22 +161,22 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DB\BDMS-DB.mdf">
+    <Content Include="Database\BDMS.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="DB\BDMS-DB_log.ldf">
+    <Content Include="Database\BDMSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDMSModel.edmx</DependentUpon>
+      <LastGenOutput>BDMSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\BDMSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BDMSModel.edmx</DependentUpon>
+      <LastGenOutput>BDMSModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\BDMS_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>BDMS-DB.mdf</DependentUpon>
-    </Content>
-    <Content Include="DB\BDMS-Context.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BDMS-Context.edmx</DependentUpon>
-      <LastGenOutput>BDMS-Context.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DB\BDMS-Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BDMS-Context.edmx</DependentUpon>
-      <LastGenOutput>BDMS-Context.cs</LastGenOutput>
+      <DependentUpon>BDMS.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
