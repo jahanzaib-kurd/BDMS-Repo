@@ -5,9 +5,11 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDMS", "BDMS\BDMS.csproj", "{6094AFD5-EFCB-4EA4-AED2-6B4FEE6D3C04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessModelParser", "BusinessModelParser\BusinessModelParser.csproj", "{2A66C02D-519B-4768-805B-B642EF01636F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessModelParser\BusinessLogicLayer.csproj", "{2A66C02D-519B-4768-805B-B642EF01636F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{194CA9D6-BC96-448D-A2A5-6962015E23F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessModels", "BusinessModels\BusinessModels.csproj", "{AA3E77E2-BD4E-4F95-852B-E09B8D4D62EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{194CA9D6-BC96-448D-A2A5-6962015E23F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{194CA9D6-BC96-448D-A2A5-6962015E23F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{194CA9D6-BC96-448D-A2A5-6962015E23F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3E77E2-BD4E-4F95-852B-E09B8D4D62EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3E77E2-BD4E-4F95-852B-E09B8D4D62EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3E77E2-BD4E-4F95-852B-E09B8D4D62EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3E77E2-BD4E-4F95-852B-E09B8D4D62EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

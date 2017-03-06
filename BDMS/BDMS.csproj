@@ -60,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\Areas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainMenu.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +71,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\AreaUpdateCommand.cs" />
+    <Compile Include="ViewModels\AreaViewModel.cs" />
+    <Compile Include="Views\Areas.xaml.cs">
+      <DependentUpon>Areas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
@@ -102,9 +111,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
+    <ProjectReference Include="..\BusinessModelParser\BusinessLogicLayer.csproj">
+      <Project>{2a66c02d-519b-4768-805b-b642ef01636f}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BusinessModels\BusinessModels.csproj">
+      <Project>{aa3e77e2-bd4e-4f95-852b-e09b8d4d62ea}</Project>
+      <Name>BusinessModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
