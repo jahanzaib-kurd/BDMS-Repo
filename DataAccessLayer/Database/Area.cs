@@ -23,7 +23,9 @@ namespace DataAccessLayer.Database
         public string AreaCode { get; set; }
         public string AreaName { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual ICollection<Shop> Shops { get; set; }
     }
 }

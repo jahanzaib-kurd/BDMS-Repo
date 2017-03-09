@@ -24,7 +24,9 @@ namespace DataAccessLayer.Database
         public string PaymentMedium { get; set; }
         public string ChequeNumber { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual Bank Bank { get; set; }
         public virtual Supplier Supplier { get; set; }
     }

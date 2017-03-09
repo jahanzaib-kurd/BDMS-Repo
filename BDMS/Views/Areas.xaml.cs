@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDMS.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace BDMS.Views
         public Areas()
         {
             InitializeComponent();
+            DataContext = new AreaViewModel();
         }
     }
 }

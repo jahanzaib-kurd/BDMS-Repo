@@ -20,7 +20,9 @@ namespace DataAccessLayer.Database
         public Nullable<System.DateTime> ToDate { get; set; }
         public Nullable<System.DateTime> FromDate { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual Product Product { get; set; }
     }
 }

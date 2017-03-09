@@ -28,7 +28,9 @@ namespace DataAccessLayer.Database
         public Nullable<decimal> ExtraDiscount { get; set; }
         public Nullable<decimal> NetTotal { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual Shop Shop { get; set; }
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }

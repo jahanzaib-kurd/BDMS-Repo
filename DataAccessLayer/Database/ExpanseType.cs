@@ -23,7 +23,9 @@ namespace DataAccessLayer.Database
         public string ExpanseTypeCode { get; set; }
         public string Description { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual ICollection<Expanse> Expanses { get; set; }
     }
 }

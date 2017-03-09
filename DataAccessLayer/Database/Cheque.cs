@@ -20,7 +20,9 @@ namespace DataAccessLayer.Database
         public Nullable<System.DateTime> ChequeDate { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual Bank Bank { get; set; }
     }
 }

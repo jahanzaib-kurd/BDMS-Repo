@@ -63,6 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Application.cs">
+      <DependentUpon>BDMSModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Area.cs">
       <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
@@ -70,19 +73,19 @@
       <DependentUpon>BDMSModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\BDMSModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>BDMSModel.Context.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Database\BDMSModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>BDMSModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Database\BDMSModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>BDMSModel.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Database\Cheque.cs">
       <DependentUpon>BDMSModel.tt</DependentUpon>
@@ -148,10 +151,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Database\BDMSModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BDMSModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Database\BDMSModel.edmx.diagram">
       <DependentUpon>BDMSModel.edmx</DependentUpon>
     </None>
@@ -165,19 +164,25 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Database\BDMSModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BDMSModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BDMSModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Database\BDMSModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BDMSModel.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>BDMSModel.cs</LastGenOutput>
     </Content>
     <Content Include="Database\BDMS_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>BDMS.mdf</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Database\BDMSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BDMSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

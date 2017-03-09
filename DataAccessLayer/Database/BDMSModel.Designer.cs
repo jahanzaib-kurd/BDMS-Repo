@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Jahanzaib\documents\visual studio 2013\Projects\BDMS\DataAccessLayer\Database\BDMSModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\jahanzaib.kurd\Source\Repos\BDMS-Repo\DataAccessLayer\Database\BDMSModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

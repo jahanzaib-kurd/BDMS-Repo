@@ -26,7 +26,9 @@ namespace DataAccessLayer.Database
         public string SupplierName { get; set; }
         public Nullable<decimal> OpeningBalanace { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual ICollection<Purchase> Purchases { get; set; }
         public virtual ICollection<SupplierReciept> SupplierReciepts { get; set; }
     }

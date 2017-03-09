@@ -22,7 +22,9 @@ namespace DataAccessLayer.Database
         public Nullable<decimal> ClosingBalance { get; set; }
         public Nullable<decimal> Tonage { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual Product Product { get; set; }
     }
 }

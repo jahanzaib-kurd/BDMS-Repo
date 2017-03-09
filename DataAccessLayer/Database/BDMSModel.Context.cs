@@ -25,6 +25,7 @@ namespace DataAccessLayer.Database
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
         public virtual DbSet<Cheque> Cheques { get; set; }

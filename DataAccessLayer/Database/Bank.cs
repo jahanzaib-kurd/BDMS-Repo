@@ -28,7 +28,9 @@ namespace DataAccessLayer.Database
         public string BankName { get; set; }
         public Nullable<decimal> BankBalance { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual ICollection<Cheque> Cheques { get; set; }
         public virtual ICollection<Expanse> Expanses { get; set; }
         public virtual ICollection<InvoiceReceipt> InvoiceReceipts { get; set; }

@@ -26,7 +26,9 @@ namespace DataAccessLayer.Database
         public string Description { get; set; }
         public Nullable<decimal> CurrentBalanace { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual Area Area { get; set; }
         public virtual ICollection<Invoice> Invoices { get; set; }
         public virtual ICollection<InvoiceReceipt> InvoiceReceipts { get; set; }

@@ -32,7 +32,9 @@ namespace DataAccessLayer.Database
         public Nullable<decimal> Rate { get; set; }
         public Nullable<decimal> CurrentBalance { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> ApplicationId { get; set; }
     
+        public virtual Application Application { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual ICollection<Purchase> Purchases { get; set; }

@@ -1,37 +1,40 @@
 ﻿using BDMS.Commands;
 using BusinessModels;
+using System.Collections.Generic;
 using System.Windows.Input;
+using BusinessLogicLayer;
 
 namespace BDMS.ViewModels
 {
-class AreaViewModel
-{
-    private AreaModel area;
-    //private CustomerInfoViewModel infoVM;
-    public ICommand UpdateCommand
-    { 
-        get;
-        private set;
-    }
-
-    public AreaViewModel()
+    class AreaViewModel
     {
-        area = new AreaModel("Jahanzaib","acb");
-        //infoVM = new CustomerInfoViewModel() { Info = "hello world" };
-        UpdateCommand = new AreaUpdateCommand(this);
-    }
+        private List<AreaModel> areas;
+        private AreaModel updatedArea;
+        //private CustomerInfoViewModel infoVM;
+        public ICommand UpdateCommand
+        {
+            get;
+            private set;
+        }
 
-    public AreaModel Area
-    {
-        get{ return area;}
-    }
+        public AreaViewModel()
+        {
+            areas = BusinessModelParser.GetAreas();
+            //infoVM = new CustomerInfoViewModel() { Info = "hello world" };
+            UpdateCommand = new AreaUpdateCommand(this);
+        }
 
-    public void SaveChanges()
-    {
-        //CustomerInfo view = new CustomerInfo();
-        //view.DataContext = infoVM;
-        //infoVM.Info = Customer.Name + " was updated";
-        //view.ShowDialog();
+        public List<AreaModel> Areas
+        {
+            get { return areas; }
+        }
+
+        public void SaveChanges()
+        {
+            //CustomerInfo view = new CustomerInfo();
+            //view.DataContext = infoVM;
+            //infoVM.Info = Customer.Name + " was updated";
+            //view.ShowDialog();
+        }
     }
-}
 }
