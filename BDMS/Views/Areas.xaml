@@ -2,13 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Areas" Height="Auto" Width="Auto">
-    <Grid>
+    <Grid>       
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0">
+        <Grid Grid.Column="0" Height="150" VerticalAlignment="Top" Margin="0 10 0 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -16,16 +16,30 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0">Area Code: </Label>
+            <Label Grid.Row="0">Area Code:</Label>
             <TextBox Grid.Column="1" Margin="0,0,0,25" />
             <Label Grid.Column="1" VerticalAlignment="Bottom">Error</Label>
-            <Label Grid.Row="1">Area Name: </Label>
+            <Label Grid.Row="1">Area Name:</Label>
             <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,25" />
             <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom">Error</Label>
-            
         </Grid>
         <DataGrid Grid.Column="2"></DataGrid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Height="Auto" VerticalAlignment="Bottom" Width="Auto">
+            <Grid Grid.Column="0" VerticalAlignment="Bottom" Height="75" HorizontalAlignment="Right" Grid.ColumnSpan="2" Width="246">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="122.5" />
+                    <ColumnDefinition Width="122.5" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Bottom">
+                <Button Style="{StaticResource GelButton}">Update</Button>
+                <Button Style="{StaticResource GelButton}">Update</Button>
+            </StackPanel>
+                <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
+                    <Button Style="{StaticResource GelButton}">Update</Button>
+                    <Button Style="{StaticResource GelButton}">Update</Button>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Window>
