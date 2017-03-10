@@ -5,15 +5,18 @@
 
     public class AreaModel : INotifyPropertyChanged, IDataErrorInfo
     {
+        #region PrivateProperties
+        private string areaId;
         private string areaCode;
         private string areaName;
-        public AreaModel()
+        private bool? isDeleted;
+        #endregion
+
+        #region Public Properties
+        public String AreaId
         {
-        }
-        public AreaModel(string areaCode, string areaName)
-        {
-            AreaCode = areaCode;
-            AreaName = areaName;
+            get { return areaId; }
+            set { areaId = value; }
         }
 
         public String AreaCode
@@ -25,6 +28,7 @@
                 OnPropertyChanged("areaCode");
             }
         }
+
         public String AreaName
         {
             get { return areaName; }
@@ -35,6 +39,28 @@
             }
         }
 
+        public bool? IsDeleted
+        {
+            get { return isDeleted; }
+            set
+            {
+                isDeleted = value;
+                OnPropertyChanged("isDeleted");
+            }
+        }
+        #endregion
+
+        #region Constructors
+        public AreaModel()
+        {
+        }
+
+        public AreaModel(string areaCode, string areaName)
+        {
+            AreaCode = areaCode;
+            AreaName = areaName;
+        }
+        #endregion
 
         #region IDataErrorInfo Members
         string IDataErrorInfo.Error

@@ -3,11 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local ="clr-namespace:BDMS"
         Title="Areas" Height="Auto" Width="Auto">
-    <Grid>       
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />
             <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Height="150" VerticalAlignment="Top" Margin="0 10 0 0">
             <Grid.ColumnDefinitions>
@@ -19,13 +19,28 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0">Area Code:</Label>
-            <TextBox Name="txtAreaCode" Grid.Column="1" Margin="0,0,0,25" Text="{Binding Area.AreaCode, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
+            <TextBox Name="txtAreaCode" Grid.Column="1" Margin="0,0,0,25" Text="{Binding UpdatedArea.AreaCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"/>
             <Label Grid.Column="1" VerticalAlignment="Bottom" Content="{Binding ElementName=txtAreaCode, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
             <Label Grid.Row="1">Area Name:</Label>
-            <TextBox Name="txtAreaName" Grid.Row="1" Grid.Column="1" Margin="0,0,0,25" Text="{Binding Area.AreaName, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" />
+            <TextBox Name="txtAreaName" Grid.Row="1" Grid.Column="1" Margin="0,0,0,25" Text="{Binding UpdatedArea.AreaName,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" />
             <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Content="{Binding ElementName=txtAreaName, Path=(Validation.Errors).CurrentItem.ErrorContent}" />
         </Grid>
-        <DataGrid Grid.Column="2"></DataGrid>
+        <DataGrid Grid.Column="2" Name="dgAreas"  AutoGenerateColumns="False" ItemsSource="{Binding Areas}" SelectedItem="{Binding UpdatedArea, Mode=TwoWay}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Area Id" Binding="{Binding AreaId}" Visibility="Hidden" />
+                <DataGridTextColumn Header="Area Code" Binding="{Binding AreaCode}"/>
+                <DataGridTextColumn Header="Area Name" Binding="{Binding AreaName}"/>
+                <DataGridTextColumn Header="Deleted" Binding="{Binding IsDeleted}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Command="{Binding Path=DataContext.UpdateCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+                            CommandParameter="{Binding ElementName=dgAreas, Path=SelectedItem}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Right" Height="Auto" VerticalAlignment="Bottom" Width="Auto">
             <Grid Grid.Column="0" VerticalAlignment="Bottom" Height="75" HorizontalAlignment="Right" Grid.ColumnSpan="2" Width="246">
                 <Grid.ColumnDefinitions>
@@ -33,12 +48,12 @@
                     <ColumnDefinition Width="122.5" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" VerticalAlignment="Bottom">
-                <Button Style="{StaticResource GelButton}">Update</Button>
-                <Button Style="{StaticResource GelButton}">Update</Button>
-            </StackPanel>
+                    <Button Command="{Binding UpdateCommand}" Style="{StaticResource GelButton}">Update</Button>
+                    <Button Command="{Binding UpdateCommand}" Style="{StaticResource GelButton}">Update</Button>
+                </StackPanel>
                 <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
-                    <Button Style="{StaticResource GelButton}">Update</Button>
-                    <Button Style="{StaticResource GelButton}">Update</Button>
+                    <Button Command="{Binding UpdateCommand}" Style="{StaticResource GelButton}">Update</Button>
+                    <Button Command="{Binding UpdateCommand}" Style="{StaticResource GelButton}">Update</Button>
                 </StackPanel>
             </Grid>
         </Border>

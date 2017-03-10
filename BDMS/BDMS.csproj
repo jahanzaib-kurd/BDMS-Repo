@@ -72,7 +72,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\AreaUpdateCommand.cs" />
+    <Compile Include="Commands\DeleteAreaCommand.cs" />
+    <Compile Include="Commands\SaveAreaCommand.cs" />
     <Compile Include="ViewModels\AreaViewModel.cs" />
     <Compile Include="Views\Areas.xaml.cs">
       <DependentUpon>Areas.xaml</DependentUpon>

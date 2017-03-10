@@ -21,12 +21,18 @@ namespace BDMS.ViewModels
         {
             areas = BusinessModelParser.GetAreas();
             //infoVM = new CustomerInfoViewModel() { Info = "hello world" };
-            UpdateCommand = new AreaUpdateCommand(this);
+            UpdateCommand = new DeleteAreaCommand(this);
         }
 
         public List<AreaModel> Areas
         {
             get { return areas; }
+        }
+
+        public AreaModel UpdatedArea
+        {
+            get { return updatedArea; }
+            set { updatedArea = value; }
         }
 
         public void SaveChanges()
@@ -35,6 +41,11 @@ namespace BDMS.ViewModels
             //view.DataContext = infoVM;
             //infoVM.Info = Customer.Name + " was updated";
             //view.ShowDialog();
+        }
+
+        public void DeleteArea(AreaModel area)
+        {
+ 
         }
     }
 }

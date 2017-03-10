@@ -14,37 +14,33 @@ namespace DataAccessLayer
         {
             using (BDMSEntities dbContext = new BDMSEntities())
             {
-                try
-                {
-                    return dbContext.Areas.ToList();
-                }
+                try { return (dbContext.Areas != null ? dbContext.Areas.ToList() : null); }
                 catch (Exception ex)
                 {
                     throw;
                 }
+                finally { dbContext.Dispose(); }
             }
         }
 
         public static List<Area> GetAreas(string AreaId)
         {
-            try
+            using (BDMSEntities dbContext = new BDMSEntities())
             {
-                using (BDMSEntities dbContext = new BDMSEntities())
+                try { return (dbContext.Areas.Any(x => x.AreaId.Equals(AreaId)) ? dbContext.Areas.Where(x => x.AreaId.Equals(AreaId)).ToList() : null); }
+                catch (Exception ex)
                 {
-                    return (dbContext.Areas.Any(x => x.AreaId.Equals(AreaId)) ? dbContext.Areas.Where(x => x.AreaId.Equals(AreaId)).ToList() : null);
+                    throw;
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
+                finally { dbContext.Dispose(); }
             }
         }
 
         public static void UpdateArea(Area updatedArea)
         {
-            try
+            using (BDMSEntities dbContext = new BDMSEntities())
             {
-                using (BDMSEntities dbContext = new BDMSEntities())
+                try
                 {
                     Area area = dbContext.Areas.FirstOrDefault(x => x.AreaId.Equals(updatedArea.AreaId));
                     if (area != null)
@@ -53,28 +49,31 @@ namespace DataAccessLayer
                         dbContext.SaveChanges();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally { dbContext.Dispose(); }
             }
         }
 
         public static void InsertArea(Area area)
         {
-            try
+            using (BDMSEntities dbContext = new BDMSEntities())
             {
-                using (BDMSEntities dbContext = new BDMSEntities())
+                try
                 {
                     dbContext.Areas.Add(area);
                     dbContext.SaveChanges();
                 }
-            }
-            catch (Exception ex)
-            {
-                throw;
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally { dbContext.Dispose(); }
             }
         }
+
         #endregion
 
     }
